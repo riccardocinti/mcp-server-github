@@ -1,0 +1,24 @@
+mcp:
+  github:
+    workspace-directory: ${GITHUB_WORKSPACE_DIR:/tmp/mcp-github-workspace}
+    max-concurrent-clones: 5
+    timeout-seconds: 300
+    cleanup-on-error: true
+    max-repository-size: 500
+
+logging:
+  level:
+    root: OFF
+
+# Required STDIO Configuration
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+
+# Server Configuration
+  ai:
+    mcp:
+      server:
+        enabled: true
+        type: SYNC
