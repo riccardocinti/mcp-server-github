@@ -130,20 +130,27 @@ Use the provided test client to verify functionality:
 ```java
 public class McpClientTest {
     public static void main(String[] args) {
-        var stdioParams = ServerParameters.builder("java")
-                .args("-jar", "target/mcp-server-github-0.0.1-SNAPSHOT.jar")
-                .build();
-
-        var transport = new StdioClientTransport(stdioParams);
-        var client = McpClient.sync(transport).build();
-
+        McpSyncClient client = null;
         try {
-            client.initialize().join();
+            var stdioParams = ServerParameters.builder("java")
+                    .args("-jar", "target/mcp-server-github-0.0.1-SNAPSHOT.jar")
+                    .build();
+
+            var transport = new StdioClientTransport(stdioParams);
+            client = McpClient.sync(transport).build();
+
+            // Wait for initialization to complete
+            client.initialize();
+
+            // List and demonstrate tools
             var toolsList = client.listTools();
             System.out.println("Available Tools = " + toolsList);
-            client.closeGracefully();
+
         } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            client.closeGracefully();
         }
     }
 }
