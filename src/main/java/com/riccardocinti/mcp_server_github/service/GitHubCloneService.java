@@ -2,11 +2,10 @@ package com.riccardocinti.mcp_server_github.service;
 
 import com.riccardocinti.mcp_server_github.config.GitHubMcpConfig;
 import com.riccardocinti.mcp_server_github.dto.CloneRequest;
-import com.riccardocinti.mcp_server_github.dto.CloneResponse;
+import com.riccardocinti.mcp_server_github.dto.CloneResult;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -47,7 +45,7 @@ public class GitHubCloneService {
         initializeWorkspaceDirectory();
     }
 
-    public CloneResponse cloneRepository(CloneRequest request) {
+    public CloneResult cloneRepository(CloneRequest request) {
         long startTime = System.currentTimeMillis();
         String targetPath = null;
 
@@ -82,8 +80,6 @@ public class GitHubCloneService {
                 try (Git git = cloneCommand.call()) {
                     Repository repository = git.getRepository();
 
-                    RevCommit latestCommit = git.log().setMaxCount(1).call().iterator().next();
-
                     // Analyze cloned repository
                     DirectoryAnalysis analysis = analyzeDirectory(targetPath);
 
@@ -92,14 +88,10 @@ public class GitHubCloneService {
                     logger.info("Successfully cloned repository {} to {} in {}ms",
                             request.repositoryUrl(), targetPath, cloneDuration);
 
-                    return CloneResponse.success(
+                    return CloneResult.success(
                             targetPath,
                             request.repositoryUrl(),
                             repository.getBranch(),
-                            latestCommit.getName(),
-                            latestCommit.getFullMessage().trim(),
-                            latestCommit.getAuthorIdent().getName(),
-                            Instant.ofEpochSecond(latestCommit.getCommitTime()),
                             analysis.fileCount(),
                             analysis.totalSize(),
                             cloneDuration,
@@ -119,7 +111,7 @@ public class GitHubCloneService {
                 cleanupDirectory(targetPath);
             }
 
-            return CloneResponse.failure(request.repositoryUrl(), e.getMessage());
+            return CloneResult.failure(request.repositoryUrl(), e.getMessage());
         }
     }
 

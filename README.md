@@ -162,7 +162,7 @@ public class McpClientTest {
 
 - **`CloneRepositoryService`**: Main service implementing the `@Tool` annotated methods
 - **`GitHubCloneService`**: Business logic for GitHub operations using JGit
-- **`CloneRequest`/`CloneResponse`**: Data transfer objects for tool parameters and responses
+- **`CloneRequest`/`CloneResult`**: Data transfer objects for tool parameters and responses
 - **`McpServerGithubApplication`**: Spring Boot main class with tool registration
 
 ## 📜 License

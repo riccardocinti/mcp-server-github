@@ -1,9 +1,14 @@
 package com.riccardocinti.mcp_server_github;
 
+import com.riccardocinti.mcp_server_github.dto.CloneRequest;
 import io.modelcontextprotocol.client.McpClient;
 import io.modelcontextprotocol.client.McpSyncClient;
 import io.modelcontextprotocol.client.transport.ServerParameters;
 import io.modelcontextprotocol.client.transport.StdioClientTransport;
+import io.modelcontextprotocol.spec.McpSchema.CallToolRequest;
+import io.modelcontextprotocol.spec.McpSchema.CallToolResult;
+
+import java.util.Map;
 
 public class McpClientTest {
 
@@ -24,6 +29,16 @@ public class McpClientTest {
             var toolsList = client.listTools();
             System.out.println("Available Tools = " + toolsList);
 
+            CloneRequest cloneRequest = new CloneRequest(
+                    "https://github.com/spring-projects/spring-ai-examples.git",
+                    null,
+                    "",
+                    null,
+                    null);
+            CallToolResult callToolResult = client
+                    .callTool(new CallToolRequest("clone_repository", Map.of("cloneRequest", cloneRequest)));
+
+            System.out.println(callToolResult);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
