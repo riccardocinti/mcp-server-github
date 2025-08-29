@@ -146,6 +146,16 @@ public class McpClientTest {
             var toolsList = client.listTools();
             System.out.println("Available Tools = " + toolsList);
 
+            CloneRequest cloneRequest = new CloneRequest(
+                    "https://github.com/spring-projects/spring-ai-examples.git",
+                    null,
+                    "",
+                    null,
+                    null);
+            CallToolResult callToolResult = client
+                    .callTool(new CallToolRequest("clone_repository", Map.of("cloneRequest", cloneRequest)));
+
+            System.out.println(callToolResult);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
