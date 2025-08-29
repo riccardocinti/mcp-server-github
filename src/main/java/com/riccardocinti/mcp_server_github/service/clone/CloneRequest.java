@@ -1,4 +1,4 @@
-package com.riccardocinti.mcp_server_github.dto;
+package com.riccardocinti.mcp_server_github.service.clone;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;

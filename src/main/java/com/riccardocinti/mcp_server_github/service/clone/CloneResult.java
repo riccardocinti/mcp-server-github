@@ -1,9 +1,6 @@
-package com.riccardocinti.mcp_server_github.dto;
+package com.riccardocinti.mcp_server_github.service.clone;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.time.Instant;
-import java.util.List;
 
 public record CloneResult(
         @JsonProperty("success")
@@ -27,27 +24,23 @@ public record CloneResult(
         @JsonProperty("cloneDurationMs")
         long cloneDurationMs,
 
-        @JsonProperty("projectFiles")
-        List<String> projectFiles,
-
         @JsonProperty("errorMessage")
         String errorMessage
 ) {
 
     public static CloneResult success(String localPath, String repositoryUrl, String branch,
                                       int filesCount, long directorySizeBytes,
-                                      long cloneDurationMs, List<String> projectFiles) {
+                                      long cloneDurationMs) {
         return new CloneResult(
                 true, localPath, repositoryUrl, branch,
-                filesCount, directorySizeBytes, cloneDurationMs,
-                projectFiles, null
+                filesCount, directorySizeBytes, cloneDurationMs, null
         );
     }
 
     public static CloneResult failure(String repositoryUrl, String errorMessage) {
         return new CloneResult(
                 false, null, repositoryUrl, null,
-                0, 0, 0, List.of(), errorMessage
+                0, 0, 0, errorMessage
         );
     }
 }

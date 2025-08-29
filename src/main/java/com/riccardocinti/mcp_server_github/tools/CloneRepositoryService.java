@@ -1,8 +1,8 @@
 package com.riccardocinti.mcp_server_github.tools;
 
-import com.riccardocinti.mcp_server_github.dto.CloneRequest;
-import com.riccardocinti.mcp_server_github.dto.CloneResult;
-import com.riccardocinti.mcp_server_github.service.GitHubCloneService;
+import com.riccardocinti.mcp_server_github.service.clone.CloneRequest;
+import com.riccardocinti.mcp_server_github.service.clone.CloneResult;
+import com.riccardocinti.mcp_server_github.service.clone.GitHubCloneService;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.riccardocinti.mcp_server_github;
 
-import com.riccardocinti.mcp_server_github.dto.CloneRequest;
+import com.riccardocinti.mcp_server_github.service.clone.CloneRequest;
 import io.modelcontextprotocol.client.McpClient;
 import io.modelcontextprotocol.client.McpSyncClient;
 import io.modelcontextprotocol.client.transport.ServerParameters;
