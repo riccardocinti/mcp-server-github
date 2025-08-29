@@ -1,8 +1,9 @@
-package com.riccardocinti.mcp_server_github.service.clone;
+package com.riccardocinti.mcp_server_github.service;
 
 import com.riccardocinti.mcp_server_github.config.GitHubMcpConfig;
 import com.riccardocinti.mcp_server_github.service.analysis.DirectoryAnalysis;
 import com.riccardocinti.mcp_server_github.service.analysis.DirectoryAnalyzer;
+import com.riccardocinti.mcp_server_github.service.clone.*;
 import com.riccardocinti.mcp_server_github.service.infrastructure.FileSystemOperations;
 import com.riccardocinti.mcp_server_github.service.infrastructure.TimeProvider;
 import org.eclipse.jgit.api.CloneCommand;
