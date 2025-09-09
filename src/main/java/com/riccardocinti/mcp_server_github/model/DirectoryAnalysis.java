@@ -1,4 +1,4 @@
-package com.riccardocinti.mcp_server_github.service.analysis;
+package com.riccardocinti.mcp_server_github.model;
 
 import java.util.List;
 

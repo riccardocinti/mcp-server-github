@@ -1,7 +1,7 @@
 package com.riccardocinti.mcp_server_github.tools;
 
-import com.riccardocinti.mcp_server_github.service.clone.CloneRequest;
-import com.riccardocinti.mcp_server_github.service.clone.CloneResult;
+import com.riccardocinti.mcp_server_github.model.CloneRequest;
+import com.riccardocinti.mcp_server_github.model.CloneResult;
 import com.riccardocinti.mcp_server_github.service.GitHubCloneService;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.ai.tool.annotation.Tool;

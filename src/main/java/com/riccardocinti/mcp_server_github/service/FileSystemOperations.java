@@ -1,4 +1,4 @@
-package com.riccardocinti.mcp_server_github.service.infrastructure;
+package com.riccardocinti.mcp_server_github.service;
 
 import java.io.File;
 import java.io.IOException;

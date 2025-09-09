@@ -1,4 +1,4 @@
-package com.riccardocinti.mcp_server_github.service.clone;
+package com.riccardocinti.mcp_server_github.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

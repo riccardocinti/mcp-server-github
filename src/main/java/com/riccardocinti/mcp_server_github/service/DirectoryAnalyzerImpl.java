@@ -1,5 +1,6 @@
-package com.riccardocinti.mcp_server_github.service.analysis;
+package com.riccardocinti.mcp_server_github.service;
 
+import com.riccardocinti.mcp_server_github.model.DirectoryAnalysis;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

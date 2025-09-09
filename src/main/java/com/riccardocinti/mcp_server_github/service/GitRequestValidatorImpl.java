@@ -1,5 +1,6 @@
-package com.riccardocinti.mcp_server_github.service.clone;
+package com.riccardocinti.mcp_server_github.service;
 
+import com.riccardocinti.mcp_server_github.model.CloneRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Pattern;
