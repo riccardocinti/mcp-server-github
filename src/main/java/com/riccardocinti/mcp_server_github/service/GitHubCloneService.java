@@ -92,7 +92,7 @@ public class GitHubCloneService {
             }
         } catch (Exception e) {
             handleCloneError(targetPath, e);
-            throw new RuntimeException("Clone failed", e);
+            throw new RuntimeException("Clone failed " + e.getMessage(), e);
         }
     }
 
